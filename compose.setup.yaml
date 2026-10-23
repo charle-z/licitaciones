@@ -1,0 +1,7 @@
+services:
+  configurar:
+    image: php:8.4.27-cli-alpine
+    working_dir: /config
+    volumes:
+      - .:/config
+    command: [php, bin/configure.php]

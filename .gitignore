@@ -1,0 +1,15 @@
+/.env
+/.env.*
+/vendor/
+/node_modules/
+/public/assets/
+/storage/*
+!/storage/.gitkeep
+/coverage/
+/.phpunit.cache/
+/.php-cs-fixer.cache
+/docs-internal/
+*.log
+*.xlsx
+*.zip
+.DS_Store

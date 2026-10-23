@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+node_modules
+vendor
+storage/*
+docs-internal
+coverage
+*.log
+*.xlsx
+*.zip

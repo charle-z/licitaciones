@@ -1,0 +1,53 @@
+name: suplos-licitaciones
+services:
+  app:
+    build:
+      context: .
+      target: production
+    ports:
+      - "127.0.0.1:8091:8080"
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: suplos
+      DB_USERNAME: suplos_app
+      DB_PASSWORD: ${DB_PASSWORD:?Ejecuta primero la configuración del README}
+      COOKIE_SECURE: "0"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - documentos:/app/storage
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=128m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 100
+    mem_limit: 384m
+    networks: [web, datos]
+  mysql:
+    image: mysql:8.4.13@sha256:76f0358884cb92d9a086d24e5671c38048d3fef40f2588703d73eb55392d6b69
+    environment:
+      MYSQL_DATABASE: suplos
+      MYSQL_USER: suplos_app
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Ejecuta primero la configuración del README}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Ejecuta primero la configuración del README}
+    volumes:
+      - datos:/var/lib/mysql
+      - ./bd:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: [CMD-SHELL, "MYSQL_PWD=$$MYSQL_PASSWORD mysql --protocol=TCP -h127.0.0.1 -u$$MYSQL_USER -D$$MYSQL_DATABASE -e 'SELECT COUNT(*) FROM actividades' >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+    security_opt: [no-new-privileges:true]
+    mem_limit: 768m
+    networks: [datos]
+volumes:
+  datos:
+  documentos:
+networks:
+  web:
+  datos:
+    internal: true
