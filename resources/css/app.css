@@ -1,0 +1,262 @@
+:root {
+  color-scheme: light;
+  --bs-primary: #194d78;
+  --bs-primary-rgb: 25, 77, 120;
+}
+body {
+  background: #f4f6f9;
+  color: #1d2e3d;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+a {
+  color: #194d78;
+  text-underline-offset: 0.2em;
+}
+.container {
+  max-width: 1360px;
+}
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #dce1e7;
+}
+.brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #193b5a;
+}
+.header-caption {
+  color: #526476;
+  font-size: 0.85rem;
+}
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+h1 {
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  font-weight: 650;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+h2 {
+  font-size: 1.13rem;
+  font-weight: 650;
+  margin-bottom: 1rem;
+}
+.eyebrow {
+  color: #66727e;
+  font-size: 0.83rem;
+  margin-bottom: 0.4rem;
+}
+.surface {
+  background: #fff;
+  border: 1px solid #d7dee6;
+  border-radius: 0.5rem;
+  padding: 1.75rem;
+}
+.page-description {
+  color: #526476;
+  margin: 0.55rem 0 0;
+}
+.offer-form {
+  max-width: 1216px;
+  margin-inline: auto;
+}
+.btn:not(.btn-sm):not(.btn-close) {
+  min-height: 2.75rem;
+  padding-inline: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #194d78;
+  outline-offset: 3px;
+}
+.filter-form {
+  margin-bottom: 1.5rem;
+}
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.form-control,
+.form-select {
+  min-height: 2.6rem;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #194d78;
+  box-shadow: 0 0 0 0.18rem #194d7825;
+}
+.btn-primary {
+  --bs-btn-bg: #194d78;
+  --bs-btn-border-color: #194d78;
+  --bs-btn-hover-bg: #123c60;
+  --bs-btn-hover-border-color: #123c60;
+  --bs-btn-disabled-bg: #194d78;
+  --bs-btn-disabled-border-color: #194d78;
+}
+.btn-outline-primary {
+  --bs-btn-color: #194d78;
+  --bs-btn-border-color: #194d78;
+  --bs-btn-hover-bg: #194d78;
+  --bs-btn-hover-border-color: #194d78;
+}
+.btn {
+  font-weight: 550;
+}
+.table > :not(caption) > * > * {
+  padding: 1rem;
+}
+.table th {
+  background: #eef2f6;
+  color: #526476;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+.table td {
+  font-size: 0.9rem;
+  border-bottom-color: #edf0f3;
+}
+.offer-description {
+  min-width: 220px;
+  max-width: 330px;
+  overflow-wrap: anywhere;
+}
+.offer-table {
+  min-width: 1000px;
+}
+.offer-object {
+  min-width: 190px;
+  max-width: 280px;
+  overflow-wrap: anywhere;
+}
+.offer-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.offer-table tbody tr:hover td {
+  background: #fafbfd;
+}
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.3rem;
+  background: #edf3f8;
+  color: #254e6f;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2rem;
+}
+.detail-grid .full {
+  grid-column: 1 / -1;
+}
+dt {
+  font-size: 0.83rem;
+  color: #66727e;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.detail-grid > div {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e7ebef;
+}
+.detail-grid > div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.detail-amount {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.preserve-lines {
+  white-space: pre-wrap;
+}
+.document-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.document-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid #e7ebef;
+  padding: 1rem 0;
+}
+.document-list li:first-child {
+  border-top: 0;
+}
+.document-list li > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.document-list .btn {
+  flex-shrink: 0;
+}
+.document-dialog {
+  border: 1px solid #dce1e7;
+  border-radius: 0.6rem;
+  padding: 1.75rem;
+  width: min(560px, calc(100% - 2rem));
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+.document-dialog::backdrop {
+  background: #18253388;
+}
+.nav-underline {
+  gap: 1.5rem;
+  border-bottom: 1px solid #d7dee6;
+}
+.nav-link {
+  color: #52606c;
+}
+@media (max-width: 575px) {
+  .surface {
+    padding: 1.1rem;
+  }
+  .header-caption {
+    display: none;
+  }
+  .page-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .page-heading > div {
+    flex: 1 1 200px;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .document-list li {
+    align-items: flex-start;
+  }
+  .document-dialog {
+    padding: 1.1rem;
+  }
+}
