@@ -15,6 +15,8 @@ Abre http://localhost:8091. La primera ejecución carga las 49.022 actividades d
 
 La configuración genera claves locales en `.env`, sin sobrescribir uno existente. MySQL no publica ningún puerto. Para detener sin perder datos: `docker compose down`. Los datos y adjuntos permanecen en volúmenes de Docker.
 
+Se aceptan `localhost:8091` y `127.0.0.1:8091`, además de `127.0.0.1:8080` para la comprobación interna. Si cambias el dominio o puerto, define `ALLOWED_HOSTS` en `.env` con los nombres y puertos exactos separados por comas; conserva `127.0.0.1:8080`. No incluye direcciones IPv6.
+
 ## Uso
 
 Crea una oferta, búscala en el listado y abre su detalle o edición. Al editar, la oferta debe tener al menos un documento. Se admiten PDF y ZIP de hasta 10 MB, con un máximo de cinco archivos nuevos por guardado. Los ZIP se almacenan sin extraerlos.

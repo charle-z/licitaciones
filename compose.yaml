@@ -12,6 +12,7 @@ services:
       DB_USERNAME: suplos_app
       DB_PASSWORD: ${DB_PASSWORD:?Ejecuta primero la configuración del README}
       COOKIE_SECURE: "0"
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS-localhost:8091,127.0.0.1:8091,127.0.0.1:8080}
     depends_on:
       mysql:
         condition: service_healthy

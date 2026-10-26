@@ -7,20 +7,22 @@ use App\Controllers\DocumentoController;
 use App\Controllers\OfertaController;
 use App\Http\HttpException;
 use App\Http\Response;
+use App\Http\TrustedHost;
 use App\Services\DocumentStorage;
 
 require dirname(__DIR__) . '/app/bootstrap.php';
 
 header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'");
-session_name('licitaciones');
-session_start(['cookie_httponly' => true, 'cookie_samesite' => 'Strict', 'cookie_secure' => getenv('COOKIE_SECURE') === '1', 'use_strict_mode' => true]);
-$_SESSION['csrf'] ??= bin2hex(random_bytes(32));
-$csrf = $_SESSION['csrf'];
-session_write_close();
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'];
-
 try {
+    TrustedHost::validate($_SERVER['HTTP_HOST'] ?? null, getenv('ALLOWED_HOSTS'));
+    session_name('licitaciones');
+    session_start(['cookie_httponly' => true, 'cookie_samesite' => 'Strict', 'cookie_secure' => getenv('COOKIE_SECURE') === '1', 'use_strict_mode' => true]);
+    $_SESSION['csrf'] ??= bin2hex(random_bytes(32));
+    $csrf = $_SESSION['csrf'];
+    session_write_close();
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $method = $_SERVER['REQUEST_METHOD'];
+
     if ($method === 'POST' && !hash_equals($csrf, $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '')) {
         throw new HttpException('La sesión cambió. Recarga la página e inténtalo de nuevo.', 403);
     }
